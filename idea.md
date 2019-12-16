@@ -10,7 +10,7 @@ whatever that i was learning. This helps me log my progress and use it for futur
 - User adds notes in comments in the code of project while working
 - fanwan makes markdown with notes
 - fanwan.clean cleans the code with extra logging notes and cleans the code of too much comments.
-- examples use case
+## examples use case
 
 if we have certain part in the code
 ```python
@@ -25,6 +25,8 @@ FanWad would make the following markdown output
 ```python
 "code that uses polynomial features linear regression"
 ```
+## Further Info
+
 - <fw> tag tells fanwad to start reading
 - [] tell the subtopic name
 - anything after ] is to be logged
