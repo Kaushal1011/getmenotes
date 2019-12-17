@@ -25,8 +25,8 @@ While working on projects that usually deal with concepts i havent studied yet i
 ## Idea
 
 - User adds notes in comments in the code of project while working
-- fanwan makes markdown with notes
-- fanwan.clean cleans the code with extra logging notes and cleans the code of too much comments.
+- gmn makes markdown with notes
+- gmn.clean cleans the code with extra logging notes and cleans the code of too much comments.
 
 ## examples use case
 
@@ -62,7 +62,6 @@ GMn would make the following markdown output
 - works only on comments starting in newline
 
 
-can use lexer mechanism from DenkInterpreter to implement lexing
 decide on a proper datastructure that parser would use
 like rather than using a tree we use a hashtable
 or maybe a new augmented hashedtree datastructure
