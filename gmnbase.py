@@ -1,5 +1,8 @@
 class gmntoken:
-    def __init__(self,text:str,code:str,topic:str):
-        self.text=text
-        self.code=code
-        self.topic=topic
+    """GMN Token Class that contains data"""
+
+    def __init__(self, text: str, code: str, topic: str):
+        """Constructor"""
+        self.text = text
+        self.code = code
+        self.topic = topic
