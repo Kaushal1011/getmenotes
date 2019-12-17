@@ -1,6 +1,6 @@
 from gmnbase import gmntoken
 
-class gmnlexer:
+class gmnlex:
     def __init__(self,filename:str):
             self.filename=filename
             self.file=open(self.filename,'r')
@@ -56,6 +56,7 @@ class gmnlexer:
                                 continue
                             else:
                                 topicflag=False
+                                topic.append('global')
                                 continue
                     if opentag==True and topicflag is not None:
                         if commentfound==True:
@@ -71,7 +72,7 @@ class gmnlexer:
                         return None
                 commentfound=False
                 if closetag==True:
-                    return gmntoken(text,code,topic)
+                    return gmntoken(''.join(text),''.join(code),''.join(topic))
             else:
                 return None
 
@@ -81,7 +82,7 @@ class gmnlexer:
 
 
 if __name__=='__main__':
-    GMN=gmnlexer("example.py")
+    GMN=gmnlex("example.py")
     a=GMN.getnexttoken()
     while a:
         a=GMN.getnexttoken()
