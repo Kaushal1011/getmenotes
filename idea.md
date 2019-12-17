@@ -20,7 +20,7 @@ if we have certain part in the code
 # </gm>
 ```
 
-FanWad would make the following markdown output
+GMn would make the following markdown output
 
 # Project1
 
