@@ -2,7 +2,10 @@
 """Synthesiser Class of S3"""
 # <gm>{language:python}{Name:S3Syth}{Author:Kaushal}</gm>
 
-from dependency import LinearRegression, np, pd
+# from dependency import LinearRegression, np, pd
+from sklearn.linear_model import LinearRegression
+import numpy as np
+import pandas as pd
 from pyo import Server, Harmonizer, Disto, ButLP, ButBR, Linseg, Sine, Biquad, LFO, STRev, Sig, Chorus, Mix, Follower, MidiAdsr, Adsr, SfPlayer, Selector, Notein, EQ, HarmTable, Osc, Spectrum, Scope
 from random import random
 # <gm> [Pyo] Pyo Uses its own server to manage audio operations </gm>
@@ -16,11 +19,11 @@ class S3Synth:
     def __init__(self, wavecoef_: np.ndarray, transpo=1, mul=1):
         # Transposition factor.
         self.transpo = Sig(transpo)
-         # <gm> [Pyo] Notein class of Pyo is used to 
-        # Receive midi notes, convert pitch to Hz and manage 10 voices of polyphony. 
+         # <gm> [Pyo] Notein class of Pyo is used to
+        # Receive midi notes, convert pitch to Hz and manage 10 voices of polyphony.
         self.note = Notein(poly=10, scale=1, first=0, last=127)
        # </gm>
-       # <gm> [Pyo] Notein.keyboard() is used to display a gui keyboard on screen which mimics a virtual keyboard 
+       # <gm> [Pyo] Notein.keyboard() is used to display a gui keyboard on screen which mimics a virtual keyboard
         self.note.keyboard()
         # </gm>
         #<gm> [Pyo] Handle pitch and velocity (Notein outputs normalized amplitude (0 -> 1)).

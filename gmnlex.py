@@ -1,48 +1,89 @@
+from gmnbase import gmntoken
+
 class gmnlexer:
     def __init__(self,filename:str):
             self.filename=filename
             self.file=open(self.filename,'r')
 
-    def getline(self):
+    def getline(self)->str:
         line = self.file.readline()
         if line:
-            return line        
+            return line
 
-    def getnexttoken(self):
+    def getnexttoken(self)->gmntoken:
         opentag=False
         closetag=False
-        nextline=False
-        codefound=False
-        startlogging=False
         commentfound=False
+        topicflag=None
+        skip=False
         text=[]
         code=[]
         topic=[]
+        skipper=0
+
+        #<gm>[Lexer] check for comment
+        # check for start tag, check topic if not set global
+        # check for code lines
+        # </gm>
         while True:
             line=self.getline()
-            for i in range(len(line)):
-                if(line[i]==" " and startlogging==False):
-                    continue
-                elif (line[i]=="#" and startlogging==False):
-                    commentfound=True
-                elif commentfound==True and line[i:i+4]=="<gm>":
-                    startlogging=startlogging=True
-                elif startlogging==True and codefound==False:
-                    text.append(line(i))
-                else:
-                    break
-            nextline=True    
-                    
+            if line is not None:
+                for i in range(len(line)):
+                    # print(opentag,closetag,text,code,topic,line[i])
+                    if skip==True and i<=skipper:
+                        continue
+                    else:
+                        skip=False
+                    if line[i]=="#" and commentfound==False:
+                        commentfound=True
+                    if commentfound==False and opentag==False:
+                        continue
+                    if commentfound==True and opentag==False and line[i:i+4]=="<gm>":
+                        opentag=True
+                        skip=True
+                        skipper=i+4
+                        continue
+                    if opentag==True and topicflag is None:
+                        if line[i]!=' ':
+                            if line[i]=='[':
+                                j=i+1
+                                while line[j]!=']':
+                                    topic.append(line[j])
+                                    j+=1
+                                skip=True
+                                skipper=j
+                                topicflag=True
+                                continue
+                            else:
+                                topicflag=False
+                                continue
+                    if opentag==True and topicflag is not None:
+                        if commentfound==True:
+                            if(line[i:i+5]=="</gm>"):
+                                closetag=True
+                                break
+                            if line[i]!='#':
+                                text.append(line[i])
+                        if commentfound==False:
+                            code.append(line[i])
+                        continue
+                    if line[i:i+5]=="</gm>":
+                        return None
+                commentfound=False
+                if closetag==True:
+                    return gmntoken(text,code,topic)
+            else:
+                return None
 
-                
-            
 
-        
-        
-            
+
 
 
 
 if __name__=='__main__':
     GMN=gmnlexer("example.py")
-    GMN.maketokenarray()
+    a=GMN.getnexttoken()
+    while a:
+        a=GMN.getnexttoken()
+        if a is not None:
+            print(''.join(a.topic))
