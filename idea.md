@@ -41,6 +41,8 @@ GMn would make the following markdown output
 - error if two consecutive opening fw tags are receive
 - first gm tag should contain metadata about the code i.e Name of notes file, Author, Date, Language
 - currently made for python code.  
+- works only on comments starting in newline
+
 
 can use lexer mechanism from DenkInterpreter to implement lexing
 decide on a proper datastructure that parser would use
