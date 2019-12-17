@@ -1,4 +1,5 @@
-# fantastic-waddle
+# getmenotes
+
 Makes Notes in markdown format based on comments in code of your application
 
 Fantastic-Waddle is a project developed by a coder that whole-heartedly believes in project based learning.
