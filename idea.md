@@ -1,4 +1,4 @@
-# Idea for fantastic waddle
+# Idea for getmenotes
 
 ## Premise
 
@@ -7,8 +7,8 @@ While working on projects that usually deal with concepts i havent studied yet i
 ## Idea
 
 - User adds notes in comments in the code of project while working
-- fanwan makes markdown with notes
-- fanwan.clean cleans the code with extra logging notes and cleans the code of too much comments.
+- gmn makes markdown with notes
+- gmn.clean cleans the code with extra logging notes and cleans the code of too much comments.
 
 ## examples use case
 
