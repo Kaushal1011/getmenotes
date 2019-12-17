@@ -1,7 +1,11 @@
+import argparse
+import sys
+
 from gmnhash import gmnhash
 
+
 class gmn:
-    def __init__(self,filename=str):
+    def __init__(self,filename:str):
         self.filename=filename
         self.gmnhash=gmnhash(self.filename)
         self.gmnhash.makehashtable()
@@ -27,5 +31,12 @@ class gmn:
         self.outfile.close()
 
 if __name__=='__main__':
-    GMN=gmn("example.py")
+    parser = argparse.ArgumentParser(
+        description='GMN-getmenotes "A Documentation tool"'
+    )
+    parser.add_argument('inputfile', help='source file')
+
+    args = parser.parse_args()
+    print(args.inputfile)
+    GMN=gmn(args.inputfile)
     GMN.makemarkdown()
