@@ -1,6 +1,7 @@
 from gmnbase import gmntoken
 
 class gmnlex:
+    """lexer class of getmenotes: Makes tokens from reading code"""
     def __init__(self,filename:str):
             self.filename=filename
             self.file=open(self.filename,'r')

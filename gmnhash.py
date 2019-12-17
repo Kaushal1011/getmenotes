@@ -1,6 +1,6 @@
 from gmnlex import gmnlex
 
-class gnmhash:
+class gmnhash:
     def __init__(self,filename:str):
         self.filename=filename
         self.hashtable={}
@@ -17,6 +17,6 @@ class gnmhash:
 
 
 if __name__=='__main__':
-    GMN=gnmhash("example.py")
+    GMN=gmnhash("example.py")
     GMN.makehashtable()
     print(GMN.hashtable)
